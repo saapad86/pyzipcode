@@ -33,7 +33,7 @@ class ConnectionManager(object):
         
         if not conn and retry_count > 10:
             raise sqlite3.OperationalError("Can't connect to sqlite database.")
-                
+            
         cursor = conn.cursor()
         cursor.execute(sql, args)
         res = cursor.fetchall()
@@ -41,7 +41,7 @@ class ConnectionManager(object):
         return res
 
 ZIP_QUERY = "SELECT * FROM ZipCodes WHERE zip=?"
-ZIP_RANGE_QUERY = "SELECT * FROM ZipCodes WHERE longitude >= %s and longitude <= %s AND latitude >= %s and latitude <= %s"
+ZIP_RANGE_QUERY = "SELECT * FROM ZipCodes WHERE longitude >= ? and longitude <= ? AND latitude >= ? and latitude <= ?"
 ZIP_FIND_QUERY = "SELECT * FROM ZipCodes WHERE city LIKE ? AND state LIKE ?"
 
 class ZipCode(object):
