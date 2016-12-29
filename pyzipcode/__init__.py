@@ -1,4 +1,7 @@
-from settings import db_location
+try:
+    from settings import db_location
+except:
+    from pyzipcode.settings import db_location
 try:
     import sqlite3
 except ImportError:
